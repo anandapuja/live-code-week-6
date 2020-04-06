@@ -6,10 +6,30 @@ module.exports = (sequelize, DataTypes) => {
   class Food extends Model {}
 
   Food.init({
-    title: DataTypes.STRING,
-    price: DataTypes.INTEGER,
-    ingredients: DataTypes.STRING,
-    tag: DataTypes.STRING
+    title: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: true
+      }
+    },
+    price: {
+      type: DataTypes.INTEGER,
+      validate: {
+        notEmpty: true
+      }
+    },
+    ingredients: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: true
+      }
+    },
+    tag: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: true
+      }
+    }
   }, { sequelize })
 
   Food.associate = function(models) {

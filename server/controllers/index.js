@@ -52,7 +52,6 @@ class Controller {
         })
     }
     static foods(req,res){
-        console.log('>>>>>>', req.UserId)
         const reqbody = {
             title: req.body.title,
             price: req.body.price,
@@ -60,7 +59,6 @@ class Controller {
             tag: req.body.tag,
             UserId: req.UserId
         }
-        console.log('>>> reqbody',reqbody);
         Food.create(reqbody)
         .then( data => {
             res.status(201).json({
@@ -73,6 +71,7 @@ class Controller {
     }
     static viewFoods(req,res){
         Food.findAll({
+            order: [['id', 'desc']],
             where: {
                 UserId: req.UserId
             }

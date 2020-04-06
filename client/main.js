@@ -24,6 +24,7 @@ $('#login-form').submit( e => {
         localStorage.setItem('access_token', data.access_token);
         $('#login-section').hide();
         $('#full-app').show();
+        viewFoods()
         console.log(data)
     }).fail( err => {
         console.log(err)
@@ -86,7 +87,7 @@ function viewFoods(){
                 <td>${data.data[i].price}<td>
                 <td>${data.data[i].ingredients}<td>
                 <td>${data.data[i].tag}<td>
-                <td><button onclick="deleteFood(${data.data[i].id})">Delete</button><td>
+                <td><button class="btn btn-danger" onclick="deleteFood(${data.data[i].id})">Delete</button><td>
             </tr>
         `)
         }
