@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Food.associate = function(models) {
     // associations can be defined here
+    Food.belongsTo(models.User)
   };
   return Food;
 };

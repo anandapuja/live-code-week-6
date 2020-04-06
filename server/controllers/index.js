@@ -66,6 +66,37 @@ class Controller {
             res.status(201).json({
                 data
             })
+        }).catch( err =>{
+            console.log(err)
+            res.status(500).json({ err })
+        })
+    }
+    static viewFoods(req,res){
+        Food.findAll({
+            where: {
+                UserId: req.UserId
+            }
+        }).then( data => {
+            res.status(200).json({
+                data
+            })
+        }).catch( err => {
+            console.log(err);
+            res.status(500).json({
+                err
+            })
+        })
+    }
+    static deleteFoods(req,res){
+        Food.destroy({
+            where: {
+                id: req.params.id
+            }
+        }).then( data => {
+            console.log(data)
+            res.status(200).json({
+                message: `Successfully delete food from your menu`
+            })
         })
     }
 }
